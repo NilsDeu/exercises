@@ -1,14 +1,15 @@
 kalorien = 0
 elfen = []
 
-with open("01.data.txt") as data:
+with open("input.txt") as data:
     for line in data:
         if line == "\n":
             elfen.append(kalorien)
             kalorien = 0
         else:
             kalorien += int(line)
-# vergessen! Durch die Leerzeile am Ende aber aufgefangen
+# vergessen! Durch die Leerzeile am Ende beim Kopieren aber
+# trotzdem das richtige Ergebnis
 elfen.append(kalorien)
 
 top3 = 0

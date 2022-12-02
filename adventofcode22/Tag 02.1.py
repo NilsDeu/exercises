@@ -1,9 +1,10 @@
 punkte = 0
-tmp=''
-# X lose, Y  draw, and Z win.
-ersatz = tmp.maketrans("ABCXYZ", "123123", "\n")
 
-with open("02.data.txt") as daten:
+# X lose, Y  draw, and Z win.
+ersatz=''
+ersatz = ersatz.maketrans("ABCXYZ", "123123", "\n")
+
+with open("input.txt") as daten:
     for zeile in daten:
         zeile = zeile.translate(ersatz)
 
