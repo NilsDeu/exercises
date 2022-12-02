@@ -1,2 +1,2 @@
 # Exercises
-Just a collection of excersice solutions
+Just a collection of excercise solutions
