@@ -1,26 +1,24 @@
+kalorien = 0
+elfen = []
 
-score = 0
-score2 = 0
-tmp=''
-ersatz = tmp.maketrans("ABCXYZ", "123123", "\n")
-
-with open("02.data.txt") as daten:
-    for zeile in daten:
-        zeile = zeile.translate(ersatz)
-
-        # 1 for Rock, 2 for Paper, and 3 for Scissors
-        score += int(zeile[2])  
-
-        # 0 if you lost, 3 if the round was a draw, and 6 if you won
-        if zeile[0] == zeile[2]:
-            score += 3
-        elif int(zeile[0]) % 2 == int(zeile[2]) % 2:
-            if int(zeile[2]) < int(zeile[0]):
-                score +=6
+with open("01.data.txt") as data:
+    for line in data:
+        if line == "\n":
+            elfen.append(kalorien)
+            kalorien = 0
         else:
-            if int(zeile[2]) > int(zeile[0]):
-                score +=6
+            kalorien += int(line)
+# vergessen! Durch die Leerzeile am Ende aber aufgefangen
+elfen.append(kalorien)
 
+top3 = 0
+elfen_sortiert = sorted(elfen, key=int, reverse=True)
+for i in range (0,3):
+    top3 += elfen_sortiert[i]
 
-print(f"Die Highscore für Teil Eins: {score}")
-print(f"Die Highscore für Teil Zwei: {score2}")
+print (f"Maximale Kalorien: {max(elfen)}")
+print (f"Die Top 3 tragen : {top3} Kalorien")
+
+# viel elegantere Lösungen:
+# https://github.com/aspittel/advent-of-code/blob/main/2022/01/script.py
+# https://luisnatera.com/posts/2022/12/advent-of-code-day-1/
