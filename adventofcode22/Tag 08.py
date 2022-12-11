@@ -4,7 +4,7 @@ forest = []
 x = y = 0
 
 def is_visible(tree_X: int, tree_Y: int, height: int, forest: list) -> bool:
-    '''Determine if a tree is visible'''
+    '''Determine if a tree is visible from the outside of the grid.'''
     if tree_X == 0 or tree_Y == 0 or tree_X+1 == len(forest[0]) or tree_Y+1 == len(forest):
         return True #edge cases
     '''from left'''
@@ -69,12 +69,14 @@ def get_scenic_score(tree_X: int, tree_Y: int, height: int, forest: list) -> int
             d = len(forest) - tree_Y - 1
     return a*b*c*d
 
+''' Get grid data '''
 with open("input.txt") as data:
     for tree_line in data:
         if not tree_line:
             continue
         forest.append(list(tree_line.replace("\n","")))
 
+''' Compute '''
 for line in forest:
     for tree in line:
         if is_visible(x, y, int(forest[y][x]), forest):
@@ -85,5 +87,6 @@ for line in forest:
         x += 1
     y += 1
     x = 0
+
 print(f"{total_trees_visible} trees are visible from outside the grid.")
 print(f"{scenic_score} is the highest scenic score possible for any tree.")
